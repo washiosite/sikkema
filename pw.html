@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Password Generator</title>
+
+<style>
+table{
+    border-collapse:collapse;
+}
+th,td{
+    border:1px solid #000;
+    padding:6px 10px;
+    text-align:center;
+}
+button{
+    margin-bottom:10px;
+}
+</style>
+</head>
+<body>
+
+<button id="gen">生成 (Q)</button>
+
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>パスワード</th>
+<th>組み合わせ数</th>
+<th>平均解析時間</th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+
+<script src="pw.js"></script>
+
+</body>
+</html>
