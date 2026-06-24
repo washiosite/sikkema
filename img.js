@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const SCALE = 4; // 数字を大きくするほど低解像度
+const SCALE = 400; // 数字を大きくするほど低解像度
 
 function draw() {
 
