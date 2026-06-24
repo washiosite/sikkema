@@ -1,7 +1,13 @@
-function randomNumber() {
-    const num = Math.floor(Math.random() * 10);
-    document.getElementById("number").textContent = num;
+const n = document.getElementById("n");
+
+function generate() {
+    n.textContent = Math.floor(Math.random() * 10);
 }
 
-// 初回表示
-randomNumber();
+document.addEventListener("keydown", e => {
+    if (e.key.toLowerCase() === "q") {
+        generate();
+    }
+});
+
+generate();
