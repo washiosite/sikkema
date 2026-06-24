@@ -1,31 +1,31 @@
 const n = document.getElementById("n");
-const table = document.getElementById("table");
+const history = document.getElementById("history");
 
-let count = Array(10).fill(0);
+const log = [];
 
-for(let i=0;i<10;i++){
-    table.innerHTML += `<tr><td>${i}</td><td id="c${i}">0</td></tr>`;
-}
+function generate() {
+    const x = Math.floor(Math.random() * 10);
 
-function generate(){
-    const x = Math.floor(Math.random()*10);
     n.textContent = x;
 
-    count[x]++;
-    document.getElementById(`c${x}`).textContent = count[x];
+    // 新しい履歴を先頭に追加
+    log.unshift(x);
+
+    // 最大100件まで保持
+    if (log.length > 100) log.pop();
+
+    history.textContent = log.join(" ");
 }
 
-document.addEventListener("keydown",e=>{
-    switch(e.key.toLowerCase()){
+document.addEventListener("keydown", e => {
+    switch (e.key.toLowerCase()) {
         case "q":
             generate();
             break;
 
         case "r":
-            count.fill(0);
-            for(let i=0;i<10;i++){
-                document.getElementById(`c${i}`).textContent=0;
-            }
+            log.length = 0;
+            history.textContent = "";
             break;
     }
 });
