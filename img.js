@@ -1,28 +1,30 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-function randomHex() {
-    return "#" + Math.floor(Math.random() * 16777216)
-        .toString(16)
-        .padStart(6, "0");
-}
+const SCALE = 4; // 数字を大きくするほど低解像度
 
 function draw() {
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const w = Math.ceil(window.innerWidth / SCALE);
+    const h = Math.ceil(window.innerHeight / SCALE);
 
-    const img = ctx.createImageData(canvas.width, canvas.height);
+    canvas.width = w;
+    canvas.height = h;
+
+    // 拡大表示
+    canvas.style.width = "100vw";
+    canvas.style.height = "100vh";
+
+    ctx.imageSmoothingEnabled = false;
+
+    const img = ctx.createImageData(w, h);
     const data = img.data;
 
     for (let i = 0; i < data.length; i += 4) {
-
-        const color = randomHex();
-
-        data[i]     = parseInt(color.slice(1,3),16); // R
-        data[i + 1] = parseInt(color.slice(3,5),16); // G
-        data[i + 2] = parseInt(color.slice(5,7),16); // B
-        data[i + 3] = 255;                           // A
+        data[i]     = Math.floor(Math.random() * 256); // R
+        data[i + 1] = Math.floor(Math.random() * 256); // G
+        data[i + 2] = Math.floor(Math.random() * 256); // B
+        data[i + 3] = 255;
     }
 
     ctx.putImageData(img, 0, 0);
