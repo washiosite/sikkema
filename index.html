@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ランダム数字</title>
+<meta charset="UTF-8">
+<title>0～9ランダム</title>
+<style>
+body{
+    font-family:sans-serif;
+    text-align:center;
+    margin-top:50px;
+}
+#number{
+    font-size:120px;
+    margin:20px;
+}
+.info{
+    font-size:20px;
+}
+</style>
 </head>
 <body>
 
-<h1 id="number">?</h1>
-<button onclick="randomNumber()">数字を表示</button>
+<h1 id="number">-</h1>
+
+<div class="info">
+    <div>前回：<span id="prev">-</span></div>
+    <div>試行回数：<span id="count">0</span></div>
+</div>
+
+<p>Qキー または ボタンで再生成</p>
+<button id="btn">再生成</button>
 
 <script src="script.js"></script>
 
